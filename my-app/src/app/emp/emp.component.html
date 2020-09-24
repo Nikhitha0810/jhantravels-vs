@@ -1,0 +1,71 @@
+<head><!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    
+ </head>
+
+<div class="container">
+    <div class="modal fade" id="empModel">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    
+                    <span class="close" data-dismiss="modal">&times;</span>
+                    <h4 class="modal-title">update</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        Enter EmpId: <input type="number"   name="empId" [(ngModel)] ="editObject.empId" class ="form-control"><br/>
+                        Enter EmpName: <input type="text"  name="empName" [(ngModel)] ="editObject.empName" class ="form-control"><br/>
+                        Enter Salary:<input type="number"  name="salary" [(ngModel)] ="editObject.salary" class ="form-control"><br/>
+                        Enter Gender:<input type="text"  name="gender" [(ngModel)] ="editObject.gender" class ="form-control"><br/>
+                        Enter Date: <input type="date" name="doj" [(ngModel)] ="editObject.doj" class ="form-control"><br/>
+                        Enter Phone No: <input type="text"  name="phno"  [(ngModel)] ="editObject.phno" class ="form-control"><br/>
+                        Enter Country: <input  type="text"   name="country"  [(ngModel)] ="editObject.country" class ="form-control">
+                    </form>
+                  
+                </div>
+                <div class="modal-footer">
+    
+                    <button class="btn btn-primary btn-sm" (click)="updateEmp()" data-dismiss="modal">Update</button> 
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+<table border=2 align='center' >
+    <tr>
+        <th>EmpId</th>
+        <th>EmpName</th>
+        <th>Salary</th>
+        <th>Gender</th>
+        <th>Date of Joining</th>
+        <th>Experience</th>
+        <th>Phone no</th>
+        <th>Country</th>
+        <th>Delete Record</th>
+        <th>Edit Record</th>
+     
+    </tr>
+    <tr *ngFor="let emp of employee">
+        <td>{{emp.empId}}</td>
+        <td>{{emp.empName | gender: emp.gender :emp.empName}}</td>
+        <td>{{emp.salary | currency: 'INR'}}  </td>
+        <td>{{emp.gender | uppercase}}</td>
+        <td>{{emp.doj | date: 'dd-MM-yyy'}}</td>
+        <td>{{emp.doj | experience}}</td>
+        <td>{{emp.phno | pno:emp.phno : emp.country}}</td>
+        <td>{{emp.country | uppercase}}</td>
+
+        <td align="center"><button (click)="deleteEmp(emp)" class="glyphicon glyphicon-trash"></button></td>
+        <td align="center"><button (click)="showEditPopup(emp)" class="glyphicon glyphicon-pencil"></button></td>
+    
+    </tr>
+</table>
+</div>

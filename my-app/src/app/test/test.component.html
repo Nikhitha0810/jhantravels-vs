@@ -1,0 +1,17 @@
+<h1><p>test works!</p></h1>
+your age is : {{age}} <br/>
+your name is : {{name}} <br/>
+your salary is : {{salary}}<br/>
+your hobbies :<br/>
+<ul>
+    <li *ngFor="let hobby of hobbies">{{hobby}}
+    </li>
+</ul>
+your address :
+{{address.doorNo}}<br>
+{{address.street}}<br>
+{{address.city}}<br>
+
+<input type ="text" [(ngModel)]="message"><br/>
+{{message}}<br/>
+<button (click)="showMessage()">show message</button>
